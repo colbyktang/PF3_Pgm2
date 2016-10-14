@@ -151,12 +151,12 @@ ArrayBag<ItemType> ArrayBag<ItemType>::bagUnion(ArrayBag<ItemType> bag1, ArrayBa
 
 	for (int count = 0; count < bag1.getCurrentSize(); count++)
 	{
-		bag1[count] = resultBag[count];
+		resultBag[count] = bag1[count];
 	}
 
 	for (int count = 0; count < bag2.getCurrentSize(); count++)
 	{
-		bag2[count] = resultBag[count];
+		resultBag[count] = bag2[count];
 	}
 
 	return resultBag;
@@ -166,6 +166,12 @@ template<class ItemType>
 ArrayBag<ItemType> ArrayBag<ItemType>::bagIntersection(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2)
 {
 	ArrayBag<ItemType> resultBag;
+
+	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	{
+		resultBag[count] = bag1[count];
+	}
+
 	return resultBag;
 }
 
@@ -173,5 +179,19 @@ template<class ItemType>
 ArrayBag<ItemType> ArrayBag<ItemType>::bagDifference(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2)
 {
 	ArrayBag<ItemType> resultBag;
+
+	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	{
+		resultBag[count] = bag1[count];
+	}
+
+	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	{
+		if (bag2[count] == resultBag[count]) {
+			resultBag.remove(resultBag[count]);
+		}
+	}
+
+
 	return resultBag;
 }
