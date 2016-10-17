@@ -33,7 +33,7 @@ public:
 	bool contains(const ItemType& anEntry) const;
 	int getFrequencyOf(const ItemType& anEntry) const;
 	std::vector<ItemType> toVector() const;
-	ArrayBag<ItemType> bagUnion(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2);
+	ArrayBag<ItemType> bagUnion(ArrayBag<ItemType> bag);
 	ArrayBag<ItemType> bagIntersection(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2);
 	ArrayBag<ItemType> bagDifference(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2);
 }; // end ArrayBag

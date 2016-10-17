@@ -124,39 +124,41 @@ template<class ItemType>
 int ArrayBag<ItemType>::getIndexOf(const ItemType& target) const
 {
 	bool found = false;
-   int result = -1;
-   int searchIndex = 0;
+	int result = -1;
+	int searchIndex = 0;
    
-   // If the bag is empty, itemCount is zero, so loop is skipped
-   while (!found && (searchIndex < itemCount))
-   {
-      if (items[searchIndex] == target)
-      {
-         found = true;
-         result = searchIndex;
-      } 
-      else
-      {
-         searchIndex++;
-      }  // end if
-   }  // end while
+	// If the bag is empty, itemCount is zero, so loop is skipped
+	while (!found && (searchIndex < itemCount))
+	{
+		if (items[searchIndex] == target)
+		{
+			found = true;
+			result = searchIndex;
+		} 
+		else
+		{
+			searchIndex++;
+		}  // end if
+	}  // end while
    
-   return result;
+	return result;
 }  // end getIndexOf
 
 template<class ItemType>
-ArrayBag<ItemType> ArrayBag<ItemType>::bagUnion(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2)
+ArrayBag<ItemType> ArrayBag<ItemType>::bagUnion(ArrayBag<ItemType> otherBag)
 {
 	ArrayBag<ItemType> resultBag;
 
-	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	for (int count = 0; count < getCurrentSize(); count++)
 	{
-		resultBag[count] = bag1[count];
+		resultBag.add(items[count]);
 	}
 
-	for (int count = 0; count < bag2.getCurrentSize(); count++)
+	std::vector<std::string> bagItems = otherBag.toVector();
+
+	for (int count = 0; count < otherBag.getCurrentSize(); count++)
 	{
-		resultBag[count] = bag2[count];
+		resultBag.add(bagItems[count]);
 	}
 
 	return resultBag;
