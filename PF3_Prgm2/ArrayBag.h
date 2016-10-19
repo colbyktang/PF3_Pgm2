@@ -21,7 +21,8 @@ private:
    // Returns either the index of the element in the array items that
    // contains the given target or -1, if the array does not contain 
    // the target.
-   int getIndexOf(const ItemType& target) const;   
+   int getIndexOf(const ItemType& target) const;
+   int leastFrequency(int, int);
 
 public:
 	ArrayBag();
@@ -34,8 +35,8 @@ public:
 	int getFrequencyOf(const ItemType& anEntry) const;
 	std::vector<ItemType> toVector() const;
 	ArrayBag<ItemType> bagUnion(ArrayBag<ItemType> bag);
-	ArrayBag<ItemType> bagIntersection(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2);
-	ArrayBag<ItemType> bagDifference(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2);
+	ArrayBag<ItemType> bagIntersection(ArrayBag<ItemType> bag);
+	ArrayBag<ItemType> bagDifference(ArrayBag<ItemType> bag);
 }; // end ArrayBag
 
 #include "ArrayBag.cpp"

@@ -165,35 +165,49 @@ ArrayBag<ItemType> ArrayBag<ItemType>::bagUnion(ArrayBag<ItemType> otherBag)
 }
 
 template<class ItemType>
-ArrayBag<ItemType> ArrayBag<ItemType>::bagIntersection(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2)
+int ArrayBag<ItemType>::leastFrequency(int freq, int freq2) {
+	if (freq > freq2)
+		return freq2;
+	else
+		return freq;
+}
+
+template<class ItemType>
+ArrayBag<ItemType> ArrayBag<ItemType>::bagIntersection(ArrayBag<ItemType> otherBag)
 {
 	ArrayBag<ItemType> resultBag;
 
-	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	for (int count = 0; count < getCurrentSize(); count++)
 	{
-		resultBag[count] = bag1[count];
+		int need = leastFrequency(getFrequencyOf(items[count]), otherBag.getFrequencyOf(items[count]));
+		int have = resultBag.getFrequencyOf(items[count]);
+
+		for (int freqCount = have; freqCount < need; freqCount++)
+		{
+			resultBag.add(items[count]);
+		}
 	}
 
 	return resultBag;
 }
 
 template<class ItemType>
-ArrayBag<ItemType> ArrayBag<ItemType>::bagDifference(ArrayBag<ItemType> bag1, ArrayBag<ItemType> bag2)
+ArrayBag<ItemType> ArrayBag<ItemType>::bagDifference(ArrayBag<ItemType> otherBag)
 {
 	ArrayBag<ItemType> resultBag;
 
-	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	for (int count = 0; count < getCurrentSize(); count++)
 	{
-		resultBag[count] = bag1[count];
+		resultBag.add(items[count]);
 	}
 
-	for (int count = 0; count < bag1.getCurrentSize(); count++)
+	ArrayBag<ItemType> intersectBag = resultBag.bagIntersection(otherBag);
+	std::vector<std::string> bagItems = intersectBag.toVector();
+	
+	for (int count = 0; count < intersectBag.getCurrentSize(); count++) 
 	{
-		if (bag2[count] == resultBag[count]) {
-			resultBag.remove(resultBag[count]);
-		}
+		resultBag.remove(bagItems[count]);
 	}
-
 
 	return resultBag;
 }
