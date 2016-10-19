@@ -77,9 +77,9 @@ void bagTester2(ArrayBag<std::string>& bag)
 		<< "; should be 1 (true)" << std::endl;
 	displayBag(bag);
 
-	std::string items[] = { "one", "two", "three", "three", "four", "six", "one" };
-	std::cout << "Add 7 items to the bag: " << std::endl;
-	for (int i = 0; i < 7; i++)
+	std::string items[] = { "one", "three", "three", "four", "one" };
+	std::cout << "Add 5 items to the bag: " << std::endl;
+	for (int i = 0; i < 5; i++)
 	{
 		bag.add(items[i]);
 	}  // end for
@@ -90,7 +90,7 @@ void bagTester2(ArrayBag<std::string>& bag)
 		<< "; should be 0 (false)" << std::endl;
 
 	std::cout << "getCurrentSize: returns " << bag.getCurrentSize()
-		<< "; should be 7" << std::endl;
+		<< "; should be 5" << std::endl;
 
 	std::cout << "Try to add another entry: add(\"extra\") returns "
 		<< bag.add("extra") << std::endl;
@@ -104,11 +104,11 @@ void bagTester2(ArrayBag<std::string>& bag)
 	std::cout << "remove(\"one\"): returns " << bag.remove("one")
 		<< "; should be 1 (true)" << std::endl;
 	std::cout << "getFrequencyOf(\"one\"): returns "
-		<< bag.getFrequencyOf("one") << " should be 2" << std::endl;
+		<< bag.getFrequencyOf("one") << " should be 1" << std::endl;
 	std::cout << "remove(\"one\"): returns " << bag.remove("one")
 		<< "; should be 1 (true)" << std::endl;
 	std::cout << "remove(\"one\"): returns " << bag.remove("one")
-		<< "; should be 1 (true)" << std::endl;
+		<< "; should be 0 (false)" << std::endl;
 	std::cout << std::endl;
 
 	displayBag(bag);
@@ -256,7 +256,7 @@ int main()
 	bagDifferenceTest2(bag, bag2);
 	std::cout << "All done!" << std::endl;
 
-	//system("pause");
+	system("pause");
 	return 0;
 }	// end main
 
@@ -295,23 +295,23 @@ isEmpty: returns 1; should be 1 (true)
 The bag contains 0 items:
 
 
-Add 7 items to the bag:
-The bag contains 6 items:
-one two three three four six
+Add 5 items to the bag:
+The bag contains 5 items:
+one three three four one
 
 isEmpty: returns 0; should be 0 (false)
-getCurrentSize: returns 6; should be 7
-Try to add another entry: add("extra") returns 0
+getCurrentSize: returns 5; should be 5
+Try to add another entry: add("extra") returns 1
 contains("three"): returns 1; should be 1 (true)
 contains("ten"): returns 0; should be 0 (false)
-getFrequencyOf("one"): returns 1 should be 2
+getFrequencyOf("one"): returns 2 should be 2
 remove("one"): returns 1; should be 1 (true)
-getFrequencyOf("one"): returns 0 should be 2
-remove("one"): returns 0; should be 1 (true)
-remove("one"): returns 0; should be 1 (true)
+getFrequencyOf("one"): returns 1 should be 1
+remove("one"): returns 1; should be 1 (true)
+remove("one"): returns 0; should be 0 (false)
 
-The bag contains 5 items:
-six two three three four
+The bag contains 4 items:
+extra three three four
 
 After clearing the bag, isEmpty: returns 1; should be 1 (true)
 

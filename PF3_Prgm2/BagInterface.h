@@ -1,3 +1,9 @@
+// Programmer:	Colby Tang
+// Project Number:	2
+// Project Desc:	ArrayBag Class Template with Union, Intersection and Difference Methods
+// Course:	Data Structures
+// Date:	Oct. 12, 2016
+
 //  Created by Frank M. Carrano and Timothy M. Henry.
 //  Copyright (c) 2017 Pearson Education, Hoboken, New Jersey.
 
